@@ -20,6 +20,9 @@ app.use(cookieParser());
 app.use("/test", (req, res) => {
   res.send("Welcome to villaja's backend server");
 });
+app.use("/", (req, res) => {
+  res.send("Welcome to villaja's backend server");
+});
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
