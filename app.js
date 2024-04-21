@@ -17,12 +17,7 @@ app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
 
 app.use(cookieParser());
 
-app.use("/test", (req, res) => {
-  res.send("Testing route");
-});
-app.use("/", (req, res) => {
-  res.send("Welcome to villaja's backend server");
-});
+
 
 
 // config
@@ -56,6 +51,13 @@ app.use("/api/cart", cart);
 app.use("/api/recomendation", recomendation);
 app.use("/api/withdraw", withdraw);
 app.use("/api/quick-sell", quickSell);
+
+app.use("/test", (req, res) => {
+  res.send("Testing route");
+});
+app.use("/", (req, res) => {
+  res.send("Welcome to villaja's backend server");
+});
 
 // it's for ErrorHandling
 app.use(ErrorHandler);
