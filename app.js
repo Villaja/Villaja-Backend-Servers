@@ -3,6 +3,7 @@ const ErrorHandler = require("./middleware/error");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const ping = require('ping');
 
 app.use(cors({
   origin: ['*', 'http://localhost:3000', 'https://villaja-frontend.vercel.app', "https://www.villaja.com"],
@@ -17,8 +18,22 @@ app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
 
 app.use(cookieParser());
 
+// Function to ping the server
+function pingServer() {
+    const host = 'https://villaja-backend-servers.onrender.com'; 
 
+    ping.sys.probe(host, function(isAlive){
+        const msg = isAlive ? 'Server is up' : 'Server is down';
+        console.log(`${host}: ${msg}`);
+    });
+}
 
+// Ping the server immediately on app start
+pingServer();
+
+// Ping the server every 24 hours
+const pingInterval = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+setInterval(pingServer, pingInterval);
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
