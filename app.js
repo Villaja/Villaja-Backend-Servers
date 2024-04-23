@@ -32,7 +32,7 @@ function pingServer() {
 pingServer();
 
 // Ping the server every 24 hours
-const pingInterval = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+const pingInterval = 12 * 60 * 60 * 1000; // 24 hours in milliseconds
 setInterval(pingServer, pingInterval);
 
 // config
