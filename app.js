@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 // Function to ping the server
 function pingServer() {
-    const host = 'https://villaja-backend-servers.onrender.com'; 
+    const host = 'villaja-backend-servers.onrender.com'; 
 
     ping.sys.probe(host, function(isAlive){
         const msg = isAlive ? 'Server is up' : 'Server is down';
@@ -32,7 +32,7 @@ function pingServer() {
 pingServer();
 
 // Ping the server every 24 hours
-const pingInterval = 12 * 60 * 60 * 1000; // 24 hours in milliseconds
+const pingInterval = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
 setInterval(pingServer, pingInterval);
 
 // config
